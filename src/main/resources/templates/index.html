@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+</head>
+
+<body>
+    <h1>Bienvenido a mi Aplicación Spring Boot</h1>
+    <p>Esta es una página HTML básica renderizada desde una aplicación Spring Boot.</p>
+    <br />
+    <div th:if="${individuos != null and !individuos.empty}">
+        <table border="2">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+            </tr>
+            <tr th:each="individuo : ${individuos}">
+                <td th:text="${individuo.nombre}">Mostar Nombre</td>
+                <td th:text="${individuo.apellido}">Mostrar Apellido</td>
+                <td th:text="${individuo.edad}">Mostrar Edad</td>
+                <td th:text="${individuo.correo}">Mostar Correo</td>
+                <td th:text="${individuo.telefono}">Mostar Teléfono</td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${individuos == null or individuos.empty}">
+        La lista no tiene informacion
+    </div>
+</body>
+
+</html>
